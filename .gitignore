@@ -1,0 +1,8 @@
+venv
+.env
+pgdata
+backend/__pycache__
+backend/template.egg-info
+frontend/.cache
+frontend/dist
+frontend/node_modules

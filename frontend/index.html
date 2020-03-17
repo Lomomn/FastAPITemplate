@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Hello from Frontend!</h1>
+	<script>
+		var dice = 3;
+		var sides = 6;
+		var query = `query RollDice($dice: Int!, $sides: Int) {
+			rollDice(numDice: $dice, numSides: $sides)
+		}`;
+
+		fetch('/graphql', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json',
+			},
+			body: JSON.stringify({
+				query,
+				variables: { dice, sides },
+			})
+		})
+			.then(r => r.json())
+			.then(data => console.log('data returned:', data));
+	</script>
+</body>
+</html>
